@@ -5,7 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 public class isDisplayed {
@@ -17,14 +19,32 @@ public class isDisplayed {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+    @BeforeMethod
+    public void beforeMethod() {
+        driver.get("https://www.bestbuy.com");
+    }
     @Test
-    public void test1() throws InterruptedException {
-        driver.get("https://google.com");
-        WebElement guvenlikDuvari=driver.findElement(By.xpath("//*[.='Ik ga akkoord']"));
-        Thread.sleep(3000);
-        guvenlikDuvari.click();
-        WebElement logo= driver.findElement(By.className("lnXdpd"));
-        boolean gorunuyormu= logo.isDisplayed();
+    public void titleTest(){
+        String title=driver.getTitle();
+        System.out.println(title);
+        boolean gorunuyormu=title.contains("Best");
         Assert.assertTrue(gorunuyormu);
+    }
+    @Test
+    public void logo(){
+        WebElement logo=driver.findElement(By.className("logo"));
+        boolean gorunuyormu=logo.isDisplayed();
+        Assert.assertTrue(gorunuyormu);
+    }
+    @Test
+    public void link(){
+        WebElement link=driver.findElement(By.linkText("Mexico"));
+        //  WebElement linkMexico= driver.findElement(By.partialLinkText("Mex"));
+        boolean gorunuyormu=link.isDisplayed();
+        Assert.assertTrue(gorunuyormu);
+    }
+    @AfterClass
+    public void tearDown(){
+        driver.close();
     }
 }

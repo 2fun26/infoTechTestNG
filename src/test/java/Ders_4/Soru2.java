@@ -40,8 +40,8 @@ public class Soru2 {
         girdi.click();
         girdi.sendKeys("JAVA"+ Keys.ENTER);
 
-        WebElement sonuc = driver.findElement(By.className("sg-col-inner"));
-        System.out.println("Sonuc "+sonuc);
+        WebElement sonuc1 = driver.findElement(By.className("sg-col-inner"));
+        System.out.println("Sonuc "+sonuc1);
 
 
     }

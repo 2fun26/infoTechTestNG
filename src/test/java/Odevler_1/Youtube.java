@@ -39,7 +39,7 @@ public class Youtube {
         guvenlik.click();
         Thread.sleep(3000);
 
-        WebElement arama = driver.findElement(By.cssSelector("input[id='search']"));
+        WebElement arama = driver.findElement(By.xpath("//input[@id='search']"));
         Thread.sleep(3000);
         arama.click();
         arama.sendKeys("lavitated"+Keys.ENTER);
@@ -86,12 +86,13 @@ public class Youtube {
         arama.sendKeys("how does the panama canal work?"+Keys.ENTER);
 
         WebElement belgesel = driver.findElement(By.xpath("//yt-formatted-string[@class='style-scope ytd-video-renderer']"));
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         belgesel.click();
 
-        WebElement veri = driver.findElement(By.xpath("//div[@id='info-text']"));
-        String sonuc = veri.getText();
-        System.out.println("Belgesel ==> "+sonuc);
+        WebElement veri = driver.findElement(By.xpath("(//div[@id='count'])[2]"));
+        Thread.sleep(5000);
+        System.out.println("Belgesel ==> "+veri.getText());
+        Thread.sleep(5000);
 
         driver.quit();
     }
