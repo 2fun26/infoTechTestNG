@@ -28,7 +28,10 @@ public class Amazon {
     }
 
     @BeforeMethod
-    public static void bM(){}
+    public static void bM(){
+
+
+    }
 
     @Test
     public static void amazonTest1() throws InterruptedException {
@@ -51,13 +54,31 @@ public class Amazon {
         System.out.println("Arama Sonucu ==> " + sonuc);
 
         WebElement resim = driver.findElement(By.className("s-image"));
+        Thread.sleep(3000);
         boolean gorunuyormu = resim.isDisplayed();
+        Thread.sleep(3000);
         Assert.assertTrue(gorunuyormu);
+
     }
 
     @Test
     public static void amazonTest2() throws InterruptedException {
 
+        WebElement kategori2 = driver.findElement(By.id("searchDropdownBox"));
+        Thread.sleep(3000);
+        Select select2 = new Select(kategori2);
+        Thread.sleep(3000);
+        select2.selectByIndex(13);
+
+        WebElement box2 = driver.findElement(By.id("twotabsearchtextbox"));
+        Thread.sleep(3000);
+        box2.clear();
+        Thread.sleep(3000);
+        box2.sendKeys("tea glass"+Keys.ENTER);
+
+        WebElement veri2 = driver.findElement(By.className("a-price"));
+        Thread.sleep(3000);
+        System.out.println("<tea glass> Fiyati ==> " + veri2.getText());
 
     }
 
