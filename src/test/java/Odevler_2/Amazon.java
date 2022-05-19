@@ -80,9 +80,9 @@ public class Amazon {
         Thread.sleep(3000);
         System.out.println("<tea glass> Fiyati ==> " + veri2.getText());
 
-        WebElement resim2 = driver.findElement(By.xpath("(//img[@class='s-image'])[4]"));
+        WebElement resim2 = driver.findElement(By.xpath("(//span[@class='rush-component'])[9]"));
         Thread.sleep(3000);
-        boolean tiklaniyormu = resim2.isSelected();
+        boolean tiklaniyormu = resim2.isEnabled();
         Thread.sleep(3000);
         Assert.assertTrue(tiklaniyormu);
 
